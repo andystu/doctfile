@@ -82,9 +82,27 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias ll='ls -lahG'
 alias sl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias rake="noglob rake" # for octopress rake new_post["XXXX"] under zsh without error
+alias rake="noglob rake"
+
+function sl() {
+    if [ "$1" != "" ]
+    then
+        subl $1
+    else
+        subl .
+    fi
+}
+
+mkrepo(){ 
+  if [[ -z "$1" || -z "$2" ]]
+  then
+    echo "Usage: mkrepo user_name repo_name"
+  else
+    echo "User: $1 , Name: $2"
+    curl -u "$1" https://api.github.com/user/repos -d "{\"name\":\""$2"\"}"
+  fi
+}
