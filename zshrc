@@ -87,4 +87,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias ll='ls -lahG'
 alias sl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias rake="noglob rake"
+alias rake="noglob rake" # for octopress rake new_post["XXXX"] under zsh without error
